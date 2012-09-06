@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Concierge by albatrocity</title>
 
+    <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap-custom.css">
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -28,32 +29,79 @@
         </ul>
       </header>
       <section>
-        <h3>Welcome to GitHub Pages.</h3>
+        <h3>What is this?</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>Concierge is jQuery plugin that creates a walkthrough guide for use in educating users about stuff on the page. It basically just lets you set up a bunch of popovers that fire in order.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<p><a class='concierge btn btn-primary'>Here, let me show you</a></p>
+
+<p>It was written in Coffeescript and requires Twitter's <a href='https://github.com/twitter/bootstrap/blob/master/js/bootstrap-tooltip.js'>Bootsrap Tooltip</a> and <a href='https://github.com/twitter/bootstrap/blob/master/js/bootstrap-tooltip.js'>Bootstrap Popover plugins</a>, and of course jQuery. The <a href='https://github.com/twitter/bootstrap/blob/master/js/bootstrap-popover.js'>Bootstrap Transition plugin</a> is required if you want animation support.</p>
+
+<h3 id="dependencies">Dependencies</h3>
+<ul>
+<li><a href="http://jquery.com/">jQuery</a></li>
+<li><a href="https://github.com/twitter/bootstrap/blob/master/js/bootstrap-tooltip.js">Bootsrap Tooltip</a></li>
+<li><a href="https://github.com/twitter/bootstrap/blob/master/js/bootstrap-tooltip.js">Bootstrap Popover</a></li>
+</ul>
+
+<h3>Usage</h3>
+<p>Concierge works by calling the plugin on a jQuery element that you want to scope actions to, then defining an array of steps.</p>
+<pre id="example-code"><code>
+  var guideSteps = [
+    {
+      element: $('header h1'),                    // The Element the popover will be attached to 
+      title: "This is the name of the plugin",    // Title of the popover  
+      content: "Isn't it clever?",                // Can be text, HTML, or a jQuery object
+      placement: 'bottom'                         // positioning of popover: top/bottom/left/right 
+    },      
+    {
+      element: $('#dependencies'),
+      title: "What you'll need",
+      content: "Because I'm lazy.",
+      placement: 'top'
+    },
+    {
+      element: $('#example-code'),
+      title: "Example usage",
+      content: "This is what is being run right now.",
+      placement: 'top'
+    },        
+    {
+      element: $('header ul li:eq(0)'),
+      title: "Download the zip",
+      content: "Download it and use it for something. I can't promise it will change your life, though.",
+      placement: 'bottom'
+    },
+    {
+      element: $('header ul li:eq(1)'),
+      title: "Download the Tar Ball",
+      content: "...really?",
+      placement: 'bottom'
+    },
+    {
+      element: $('header ul li:eq(2)'),
+      title: "Help me make this better",
+      content: "Or just look at the code and laugh.",
+      placement: 'bottom'
+    }          
+  ];
+  $('.concierge').click(function() {                                                           
+    $('.wrapper').concierge({                                                              
+      steps: guideSteps,                                                                 
+      onStep: function(stepIndex, $el) { 
+      },                                                                            
+      afterAll: function() {                                                        
+        alert('This is a callback after all the steps are completed. Good job!')             
+      },                                                                            
+      nextText: "Next &rarr;",                                                             
+      nextClass: "next btn",                                                                                                     
+      nextEvent: "click",                                                           
+      startingStep: 0,                                                              
+      animation: true                                                               
+    });                                               
+  });
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/albatrocity">albatrocity</a></p>
@@ -61,6 +109,65 @@ $ git checkout gh-pages
       </footer>
     </div>
     <script src="javascripts/scale.fix.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script>
+    <script src="https://raw.github.com/albatrocity/concierge/master/js/jquery.concierge.js"></script>
+    <script type="text/javascript">
+      var guideSteps = [
+        {
+          element: $('header h1'),                      
+          title: "This is the name of the plugin",      
+          content: "Isn't it clever?",
+          placement: 'bottom' 
+        },
+        {
+          element: $('#dependencies'),
+          title: "What you'll need",
+          content: "Because I'm lazy.",
+          placement: 'top'
+        },
+        {
+          element: $('#example-code'),
+          title: "Example usage",
+          content: "This is what is being run right now.",
+          placement: 'top'
+        },        
+        {
+          element: $('header ul li:eq(0)'),
+          title: "Download the zip",
+          content: "Download it and use it for something. I can't promise it will change your life, though.",
+          placement: 'bottom'
+        },
+        {
+          element: $('header ul li:eq(1)'),
+          title: "Download the Tar Ball",
+          content: "...really?",
+          placement: 'bottom'
+        },
+        {
+          element: $('header ul li:eq(2)'),
+          title: "Help me make this better",
+          content: "Or just look at the code and laugh.",
+          placement: 'bottom'
+        }          
+      ];
+      $('.concierge').click(function() {
+        $('.wrapper').concierge({
+          steps: guideSteps,
+          onStep: function(stepIndex, $el) {
+          },
+          afterAll: function() {
+            alert('This is a callback after all the steps are completed. Good job!')       
+          },
+          nextText: "Next &rarr;",                    
+          nextClass: "next btn",                   
+          nextEvent: "click",                  
+          startingStep: 0,                     
+          animation: true                      
+        });      
+      });
+      
+    </script>
     
   </body>
 </html>

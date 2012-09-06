@@ -253,3 +253,13 @@ footer {
     color:#444;
   }
 }
+
+.popover-content {
+  padding-bottom: 40px;
+}
+
+.popover-content .btn {
+  position: absolute;
+  right: 4px;
+  bottom: 5px;
+}
