@@ -1,0 +1,11 @@
+.show-grid {
+  background-color: #EEE;
+  text-align: center;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  min-height: 40px;
+  line-height: 40px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}

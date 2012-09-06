@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.1.0/bootstrap.min.js"></script> -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.concierge.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="bs-docs-grid">
+        <div class="row show-grid">
+          <div class="span1" id='hello'>1</div>
+          <div class="span1" data-original-title="">1</div>
+          <div class="span1">1</div>
+          <div class="span1">1</div>
+          <div class="span1">1</div>
+          <div class="span1">1</div>
+          <div class="span1">1</div>
+          <div class="span1">1</div>
+          <div class="span1">1</div>
+        </div>
+        <div class="row show-grid">
+          <div class="span2" data-original-title="">2</div>
+          <div class="span3">3</div>
+          <div class="span4">4</div>
+        </div>
+        <div class="row show-grid">
+          <div class="span4" data-original-title="">4</div>
+          <div class="span5">5</div>
+        </div>
+        <div class="row show-grid">
+          <div class="span9" data-original-title="">9</div>
+        </div>
+      </div>
+      <a href="#" class="help btn btn-primary">What does it all mean?</a>
+    </div>
+    <div id="example" style="display: none;">
+      <h1> HELLO!!!!!!
+    </div>
+    <script type="text/javascript">
+      $('.help').click(function() {
+        $('.bs-docs-grid').concierge({
+          steps: [
+            {
+              element: $('#hello'),
+              title: "Look at this thing!",
+              content: $('#example'),
+              placement: 'bottom'
+            },
+            {
+              element: $('.span3:first'),
+              title: "Here's another thing!",
+              content: "This thing here could answer some really puzzling questions.",
+              placement: 'right'
+            },
+            {
+              element: $('.span5:first'),
+              title: "And even a third!",
+              content: "Whoa! Cool!",
+              placement: 'bottom'
+            },
+            {
+              element: $('.span9:first'),
+              title: "And even a fourth!",
+              content: "Is this getting old?",
+              placement: 'top'
+            }
+          ],
+          afterAll: function() {
+            alert('ALL STEPS COMPLETED')
+          },
+          nextEvent: "click",
+          nextText: "Next",
+          debug: true
+        });
+        return false
+      })      
+    </script>
+  </body>
+</html>
