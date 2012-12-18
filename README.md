@@ -3,6 +3,9 @@ Concierge is jQuery plugin that creates a walkthrough guide for use in educating
 
 It was written in Coffeescript and requires Twitter's [Bootsrap Tooltip](https://github.com/twitter/bootstrap/blob/master/js/bootstrap-tooltip.js) and [Bootstrap Popover](https://github.com/twitter/bootstrap/blob/master/js/bootstrap-tooltip.js) plugins, and of course jQuery. The [Bootstrap Transition plugin](https://github.com/twitter/bootstrap/blob/master/js/bootstrap-popover.js) is required if you want animation support.
 
+## Demo
+See the [plugin page](http://albatrocity.github.com/concierge/) for a demo and example uses.
+
 ## Dependencies
 * [jQuery](http://jquery.com/)
 * [Bootsrap Tooltip](https://github.com/twitter/bootstrap/blob/master/js/bootstrap-tooltip.js)
