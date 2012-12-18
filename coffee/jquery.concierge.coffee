@@ -36,6 +36,8 @@ $.fn.extend
       activeStep = settings.steps[stepIndex]
       $el = scope.find activeStep.element
 
+      $el.data 'popover', ''
+
       $el.popover
         animation: true
         content: activeStep.content
