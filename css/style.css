@@ -9,3 +9,11 @@
   margin-top: 10px;
   margin-bottom: 20px;
 }
+
+/* example popover content settings */
+.popover-content {
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  font-size: 14px;
+}
